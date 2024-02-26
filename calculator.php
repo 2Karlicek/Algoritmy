@@ -1,163 +1,92 @@
 <!DOCTYPE html>
-<html lang="cs">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="keywords" content="Math, Caulculato, PHP, Javascript, html, css" />
-  <meta name="description" content="Simple calculator web application." />
-  <meta name="author" content="Filip Kučera" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+        <title>Calculator</title>
+    </head>
+    <body>
 
-  <title> OMK | CALCULATOR</title>
+        <?php
+            include "navbar.php";
 
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" />
-  <link href="css/responsive.css" rel="stylesheet" />
-  <link href="main.css" rel="stylesheet" />
-</head>
+        ?>
 
-<body class="sub_page">
-  <div class="hero_area">
-    <div class="hero_bg_box">
-      <div class="bg_img_box">
-        <img src="images/hero-bg.png" alt="">
-      </div>
-    </div>
-    <?php
-      include "navbar.php";
-    ?>
-  </div>
-
-        <div id="calculator">
-            <input id="display" readonly>
-            <div id="keys">
-                <button onclick="clearDisplay()" class="operator-btn">AC</button>
-                <button onclick="clearOneDisplay()" class="operator-btn">DE</button>
-                <button onclick="appendToDisplay('.')" class="operator-btn">.</button>
-                <button onclick="appendToDisplay('/')" class="math-btn">/</button>
-                <button onclick="appendToDisplay('7')">7</button>
-                <button onclick="appendToDisplay('8')">8</button>
-                <button onclick="appendToDisplay('9')">9</button>
-                <button onclick="appendToDisplay('*')" class="math-btn">*</button>
-                <button onclick="appendToDisplay('4')">4</button>
-                <button onclick="appendToDisplay('5')">5</button>
-                <button onclick="appendToDisplay('6')">6</button>
-                <button onclick="appendToDisplay('-')" class="math-btn">-</button>
-                <button onclick="appendToDisplay('1')">1</button>
-                <button onclick="appendToDisplay('2')">2</button>
-                <button onclick="appendToDisplay('3')">3</button>
-                <button onclick="appendToDisplay('+')" class="math-btn">+</button>
-                <button onclick="appendToDisplay('00')">00</button>
-                <button onclick="appendToDisplay('0')">0</button>
-                <button onclick="calculate()" class="calculate">=</button>
+        <div class="calculator">
+                <div class="menu-btn">
+                    <i class="fa-solid fa-chevron-right dropdown"></i>
+                </div>
+                <div class="side-bar">
+                    <header>
+                        <div class="close-btn">
+                            <i class="fa-solid fa-chevron-left dropdown"></i>
+                        </div>
+                    </header>
+                    <div class="buttons more-btn">
+                    <button onclick="sinus()" data-action="more-operators">sin</button>
+                    <button onclick="cos()" data-action="more-operators">cos</button>
+                    <button onclick="tan()" data-action="more-operators">tan</button>
+                    <button onclick="powerSquared()" data-action="more-operators">x²</button>
+                    <button onclick="pi()" data-action="more-operators">π</button>
+                    <button onclick="rootSquared()" data-action="more-operators">²√</button>
+                    <button onclick="powerSquaredOnThree()" data-action="more-operators">x³</button>
+                    <button onclick="log10()" data-action="more-operators">log₁₀</button>
+                    <button onclick="log()" data-action="more-operators">ln</button>
+                    <button onclick="factorialClicked()" data-action="more-operators">x!</button>
+                    <button onclick="reverseNumber()" data-action="more-operators">¹/ₓ</button>
+                    <button onclick="calculateExponential()" data-action="more-operators">eˣ</button>
+                    <button onclick="mocnina()" data-action="more-operators">x na y</button>
+                    </div>
+                </div>
+            <input class="output" id="display" disabled placeholder="0">0</input>
+            <div class="buttons move-btn">
+                 <button onclick="clearDisplay()" data-action="clear" id="clear">AC</button>
+                 <button onclick="toggleSign()" data-action="toggle-sign">+/-</button>
+                 <button onclick="percentage('%')" data-action="percentage">%</button>
+                 <button onclick="appendToDisplay('/')" class="operator-button">÷</button>
+                 <button onclick="appendToDisplay('7')" data-action="number">7</button>
+                 <button onclick="appendToDisplay('8')" data-action="number">8</button>
+                 <button onclick="appendToDisplay('9')" data-action="number">9</button>
+                 <button onclick="appendToDisplay('*')" class="operator-button">x</button>
+                 <button onclick="appendToDisplay('4')" data-action="number">4</button>
+                 <button onclick="appendToDisplay('5')" data-action="number">5</button>
+                 <button onclick="appendToDisplay('6')" data-action="number">6</button>
+                 <button onclick="appendToDisplay('-')" class="operator-button">-</button>
+                 <button onclick="appendToDisplay('1')" data-action="number">1</button>
+                 <button onclick="appendToDisplay('2')" data-action="number">2</button>
+                 <button onclick="appendToDisplay('3')" data-action="number">3</button>
+                 <button onclick="appendToDisplay('+')" class="operator-button">+</button>
+                 <button onclick="appendToDisplay('0')" class="double-wide-button" data-action="number">0</button>
+                 <button onclick="appendToDisplay('.')" data-action="number">.</button>
+                 <button onclick="calculate()" class="equals-button">=</button>
             </div>
         </div>
-    <section class="info_section layout_padding2">
-        <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-3 info_col">
-            <div class="info_contact">
-                <h4>
-                Address
-                </h4>
-                <div class="contact_link_box">
-                <a href="">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>
-                    Location
-                    </span>
-                </a>
-                <a href="">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    <span>
-                    Call +01 1234567890
-                    </span>
-                </a>
-                <a href="">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                    <span>
-                    demo@gmail.com
-                    </span>
-                </a>
-                </div>
-            </div>
-            <div class="info_social">
-                <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-            </div>
-            </div>
-            <div class="col-md-6 col-lg-3 info_col">
-            <div class="info_detail">
-                <h4>
-                Info
-                </h4>
-                <p>
-                necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful
-                </p>
-            </div>
-            </div>
-            <div class="col-md-6 col-lg-2 mx-auto info_col">
-            <div class="info_link_box">
-                <h4>
-                Links
-                </h4>
-                <div class="info_links">
-                <a class="active" href="index.html">
-                    Home
-                </a>
-                <a class="" href="about.html">
-                    About
-                </a>
-                <a class="" href="service.html">
-                    Services
-                </a>
-                <a class="" href="why.html">
-                    Why Us
-                </a>
-                <a class="" href="team.html">
-                    Team
-                </a>
-                </div>
-            </div>
-            </div>
-            <div class="col-md-6 col-lg-3 info_col ">
-            <h4>
-                Subscribe
-            </h4>
-            <form action="#">
-                <input type="text" placeholder="Enter email" />
-                <button type="submit">
-                Subscribe
-                </button>
-            </form>
-            </div>
-        </div>
-    </div>
-  </section>        
+        <script src="script.js"></script>
 
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <script type="text/javascript" src="js/custom.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
-  <script src="script.js"></script>
-</body>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('.menu-btn').click(function(){
+                    $(this).find('.dropdown').toggleClass('rotate');
+                });
+
+                $('.close-btn').click(function(){
+                    $(this).find('.dropdown').toggleClass('rotate-back');
+                });
+                
+                $('.menu-btn').click(function(){
+                    $('.side-bar').addClass('active');
+                    $('.menu-btn').css("visibility", "hidden");
+                });
+
+                $('.close-btn').click(function(){
+                    $('.side-bar').removeClass('active');
+                    $('.menu-btn').css("visibility", "visible");
+                });
+            });
+        </script>
+    </body>
 </html>

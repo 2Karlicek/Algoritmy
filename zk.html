@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML canvas tag.
+</canvas>
+
+<input type="text" id="side1" placeholder="Délka strany 1">
+<input type="text" id="side2" placeholder="Délka strany 2">
+<input type="text" id="side3" placeholder="Délka strany 3">
+<input type="text" id="angle1" placeholder="Úhel 1 (v stupních)">
+<input type="text" id="angle2" placeholder="Úhel 2 (v stupních)">
+<button onclick="drawTriangle()">Nakreslit trojúhelník</button>
+
+<script>
+
+function drawTriangle() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, c.width, c.height);
+
+    var side1 = parseFloat(document.getElementById("side1").value);
+    var side2 = parseFloat(document.getElementById("side2").value);
+    var side3 = parseFloat(document.getElementById("side3").value);
+    var angle1 = parseFloat(document.getElementById("angle1").value);
+    var angle2 = parseFloat(document.getElementById("angle2").value);
+
+    // Výpočet třetího úhlu
+    var angle3 = 180 - angle1 - angle2;
+
+    // Výpočet souřadnic trojúhelníka
+    var centerX = c.width / 2;
+    var centerY = c.height / 2;
+    var baseX = centerX - (side1 / 2);
+    var baseY = centerY + (Math.sqrt(side2**2 - (side1/2)**2));
+    var topY = baseY - (Math.sqrt(side2**2 - (side1/2)**2) - Math.sqrt(side3**2 - (side1/2)**2));
+    
+    // Nakreslení trojúhelníka
+    ctx.beginPath();
+    ctx.moveTo(baseX, baseY);
+    ctx.lineTo(centerX, centerY);
+    ctx.lineTo(baseX + side1, baseY);
+    ctx.closePath();
+    ctx.stroke();
+}
+
+</script>
+
+</body>
+</html>

@@ -20,7 +20,10 @@
                 <a class="nav-link" href="about.php">Algoritmy</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="calculator.php">Kalkulačka</a>
+                <a class="nav-link" href="service.php">Roblox hry na míru</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="calculator.php">calculator</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="why.php">Investice</a>
