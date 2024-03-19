@@ -35,7 +35,7 @@
 </head>
 
 <body class="sub_page">
-<a>úprava1</a>
+
   <div class="hero_area">
 
     <div class="hero_bg_box">
